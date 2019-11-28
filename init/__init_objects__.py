@@ -19,3 +19,5 @@ def init_video():
 def init_objects():
     global object_coord
     object_coord = []
+    global object_name
+    object_name = []
