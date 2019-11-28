@@ -19,8 +19,8 @@ for subject in os.listdir(IMAGE_PATH):
             object_num = sum(1 for i in os.listdir(init_paths.ANNOTATION_PATH+\
               subject[:9]+'annotations/'+activity+'/') if (task in i) and \
               ('obj' in i) )
-
-
+            object_num = object_num-1 if 'enhanced' not in \
+              init_paths.ANNOTATION_PATH else object_num
             ## Skeletal information
             #file = open(init_paths.ANNOTATION_PATH+subject[:9]+'annotations/'+\
             #  activity+'/'+task+'.txt')
@@ -33,7 +33,7 @@ for subject in os.listdir(IMAGE_PATH):
                 img = cv2.imread(imgname)
 
                 # For every object in the video ...
-                for o in range(object_num-1): # -1 for excluding the table bounding box
+                for o in range(object_num):
                     file = open(init_paths.ANNOTATION_PATH+subject[:9]+'annotations/'+\
                       activity+'/'+task+'_obj'+str(o+1)+'.txt', 'r')
                     lines = file.readlines()
@@ -41,6 +41,10 @@ for subject in os.listdir(IMAGE_PATH):
                     coordinates = re.split(',', line)
                     ulx, uly = float(coordinates[2]), float(coordinates[3])
                     lrx, lry = float(coordinates[4]), float(coordinates[5])
+                    # Visualize object bounding box
+                    p1 = (int(ulx), int(uly))
+                    p2 = (int(ulx+(lrx-ulx)), int(uly+(lry-uly)))
+                    cv2.rectangle(img, p1, p2, (255,0,0),2,1)
 
                     b_center_x = int(min(ulx,lrx) + abs(lrx-ulx)/2)
                     b_center_y = int(min(uly,lry) + abs(lry-uly)/2)
