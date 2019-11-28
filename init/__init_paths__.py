@@ -11,5 +11,3 @@ else:
 ANNOTATION_PATH = DATASET_PATH + 'enhanced_annotations/'
 ANNOT_RCNN = DATASET_PATH + 'annotations_rcnn/'
 
-
-
