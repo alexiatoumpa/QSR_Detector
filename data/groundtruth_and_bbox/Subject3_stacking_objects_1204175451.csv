@@ -1,4 +1,4 @@
-Frame;RCC;QTC;Bbox;qtc_arr1;qtc_arr2;qtc_arr3;bbox_arr1;bbox_arr2;bbox_arr3;bbox_arr4;bbox_arr5;bbox_arr6;bbox_arr7;bbox_arr8;bbox_arr9;bbox_arr10;bbox_arr11;bbox_arr12
+Frame;RCC_1_2;RCC_1_3;RCC_2_3;QTC_1_2;QTC_1_3;QTC_2_3;X_1;Y_1;W_1;H_1;X_2;Y_2;W_2;H_2;X_3;Y_3;W_3;H_3
 1;DR;DR;DR;;;;177;347;101;61;289;334;103;73;408;340;91;64
 2;DR;DR;DR;ST;ST;ST;177;347;101;61;289;334;103;73;408;340;91;64
 3;DR;DR;DR;ST;ST;ST;177;347;101;61;289;334;103;73;408;340;91;64
