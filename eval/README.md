@@ -11,4 +11,6 @@
 
 (3)
 - 1-hold-out validation is applied across the video IDs.
-- 
+- N videos are held out for testing (N=1).
+- Data from the other videos are used for training and validation (with the same 70/20 ratios above).
+- Since the fold sizes are different, a value of -1 is used to represent a missing entry. 
