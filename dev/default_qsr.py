@@ -1,4 +1,4 @@
-""" default_rcc
+""" default_qsr
 Detects the pair-wise RCC relations of the objects.
 
 Set Parameters:
@@ -19,6 +19,7 @@ from qsrlib.qsrlib import QSRlib, QSRlib_Request_Message
 from qsrlib_io.world_trace import Object_State, World_Trace
 import qsrlib_qstag.utils as utils
 import qsrlib_qstag.qstag
+from load_data import get_data
 
 import cv2, re, itertools, csv
 
@@ -28,6 +29,7 @@ global frame
 DATA_PATH = REPO_PATH + 'data/'
 EXP_PATH = DATA_PATH +'exp/'
 GROUNDTRUTH_PATH = DATA_PATH + 'groundtruth_relations/'
+
 
 
 def qsr_relation_between(obj1_name, obj2_name, obj1, obj2):
@@ -162,9 +164,10 @@ if __name__== "__main__":
                     # Compute RCC relations.
                     all_relations = []
                     for (o1,o2) in object_pairs:
-                        qsr_relation = qsr_relation_between(init_obj.object_name[o1], \
+                        qsr_relation = (qsr_relation_between(init_obj.object_name[o1], \
                           init_obj.object_name[o2], init_obj.object_coord[o1], \
-                          init_obj.object_coord[o2])
+                          init_obj.object_coord[o2])).upper()
+                        #print(qsr_relation)
                         all_relations.append(qsr_relation)
                     # Save relations in file.
                     with open(save_qsr_file, mode='a') as csvfile:

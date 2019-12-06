@@ -21,3 +21,5 @@ def init_objects():
     object_coord = []
     global object_name
     object_name = []
+    global objects
+    objects = []
