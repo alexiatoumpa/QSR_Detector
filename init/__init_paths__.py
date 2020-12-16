@@ -3,6 +3,8 @@ import getpass
 
 if getpass.getuser() == 'scat':
     DATASET_PATH = '/home/scat/Datasets/CAD-120/'
+elif getpass.getuser() == 'toumpa':
+    DATASET_PATH = '/Users/toumpa/Datasets/CAD-120/'
 else:
     DATASET_PATH = 'YOUR DATASET PATH HERE'
     # When you include the DATASET_PATH comment out the following couple of lines.

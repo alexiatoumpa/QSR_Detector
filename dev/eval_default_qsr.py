@@ -103,10 +103,12 @@ def main():
     IMAGE_PATH = init_paths.DATASET_PATH + 'images/'
 
     all_tasks = []
-
-    for subject in os.listdir(IMAGE_PATH):
-        for activity in os.listdir(IMAGE_PATH+subject+'/'):
-            for task in os.listdir(IMAGE_PATH+subject+'/'+activity+'/'):
+    subject_listdir = [f for f in os.listdir(IMAGE_PATH) if not f.startswith('.')]
+    for subject in subject_listdir:
+        activity_listdir = [f for f in os.listdir(IMAGE_PATH+subject+'/') if not f.startswith('.')]
+        for activity in activity_listdir:
+            task_listdir = [f for f in os.listdir(IMAGE_PATH+subject+'/'+activity+'/') if not f.startswith('.')]
+            for task in task_listdir:
                 PATH = IMAGE_PATH + subject + '/' + activity + '/' + task + '/'
                 all_tasks.append(PATH)
 
@@ -135,7 +137,7 @@ def main():
           ('obj' in i) )
         object_num = object_num-1 if 'enhanced' in \
           init_paths.ANNOTATION_PATH else object_num
-        object_pairs = list(itertools.combinations(range(object_num),2))
+        object_pairs = list(itertools.permutations(range(object_num),2))
 
 
         imgname = PATH + 'RGB_' + str(frame) + '.png'
